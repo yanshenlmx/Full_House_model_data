@@ -40,7 +40,7 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
 
-\title{Supplement Files for Comparing baseball players across eras via the novel Full House Model}
+\title{Supplementary Files for Comparing baseball players across eras via the novel Full House Model}
 
 \author{Shen Yan$^1$, Adrian Burgos Jr.$^2$, Christopher Kinson$^1$, Brandon Niedert$^3$, \\and Daniel J. Eck$^1$}
 \date{}
@@ -65,16 +65,19 @@ Fangraphs Win Above Replacement(fWAR) is scraped from the website: \url {https:/
 
 \bigskip
 
-Hits, Home Runs, and Walks are collected from Github: \url{https://github.com/chadwickbureau/baseballdatabank/tree/master/core}, and they are stored in the raw\_batter.csv. 
+Hits, Home Runs, and Walks are collected from Chadwick Baseball Bureau \url{http://www.chadwick-bureau.com/} and they provide data to a number of high-profile clients across the industry, including being a primary provider of historical statistical data for Baseball-Reference for major, minor, international, collegiate, and summer collegiate competitions. The datasets we use are listed on Github: \url{https://github.com/chadwickbureau/baseballdatabank/tree/master/core} and stored in the raw\_batter.csv.
+
+%\textbf{These are not collected from GitHub, they are collected from an organization that collects these statistics. You need to name that organization.}
 
 
 \bigskip
 
-Hits, Runs, and Home Runs in a team's home and road games are collected from Github: \url{https://github.com/chadwickbureau/retrosplits/tree/master/daybyday}, and they are stored in the teams-xx.csv. 
+Hits, Runs, and Home Runs in a team's home and road games are collected from Chadwick Baseball Bureau \url{http://www.chadwick-bureau.com/} that is mentioned above. The datasets we use are listed on Github: \url{https://github.com/chadwickbureau/retrosplits/tree/master/daybyday} and stored in the team-xx.csv. 
+%\textbf{These are not collected from GitHub, they are collected from an organization that collects these statistics. You need to name that organization.}
 
 \bigskip
 
-The unique player IDs for Baseball-Reference, and Fangraphs are collected from \url{https://github.com/chadwickbureau/register/tree/master/data} and the unique player IDs for Baseball-Reference, and Chadwick are collected from \url{https://github.com/chadwickbureau/baseballdatabank/tree/master/core}. 
+The unique player IDs for Baseball-Reference, and Fangraphs are collected from Chadwick Baseball Bureau \url{http://www.chadwick-bureau.com/} that is mentioned above. The unique player IDs for Baseball-Reference, and Chadwick are also collected from Chadwick Baseball Bureau \url{http://www.chadwick-bureau.com/}. The datasets we use are stored in people\_bb\_f.csv and people\_park\_bb.csv. 
 
  \section{Data Preprocess for Batting Statistics}
 
@@ -98,7 +101,7 @@ Fangraphs Win Above Replacement(fWAR) is scraped from the website: \url {https:/
 
 \bigskip
 
-Earned Run Average(ERA), Strikeouts(SO), and other statistics are collected from Github: \url{https://github.com/chadwickbureau/baseballdatabank/tree/master/core}, and they are stored in the Pitching.csv. 
+Earned Run Average(ERA), Strikeouts(SO), and other statistics are collected from Chadwick Baseball Bureau \url{http://www.chadwick-bureau.com/} that is mentioned above. The datasets we use are listed on Github: \url{https://github.com/chadwickbureau/baseballdatabank/tree/master/core} and stored in Pitching.csv.
 
 \section{Data Preprocess for Pitching Statistics}
 
@@ -108,6 +111,12 @@ merge\_pop\_p.R combines the bWAR, fWAR, and other statistics when a player is t
 \bigskip
 
 clean\_batters.R applies the park-factor adjustment to the Runs. Also, it combines all the important pitching statistics based on the players' unique IDs in Baseball-Reference, Fangraphs, and Chadwick. The results are stored in the pitchers\_all.csv. 
+
+\section{Summary}
+
+All the datasets and codes mentioned above can be found on Github: \url{https://github.com/yanshenlmx/Full_House_model_data} and our data processing steps are reproducible in Tech\_Report.html that is included with this submission.
+
+%\vspace*{1cm}\textbf{Add a Section that states that our data processing steps are reproducible in NAME OF DOCUMENT that is included with this submission}
 
 
 \end{document}
