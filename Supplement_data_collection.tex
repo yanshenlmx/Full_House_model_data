@@ -1,0 +1,113 @@
+\documentclass{article}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{framed}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{enumerate}
+\usepackage{graphicx} % Allows including image
+\usepackage{hyperref}
+\hypersetup{
+  linkcolor  = blue,
+  citecolor  = blue,
+  urlcolor   = blue,
+  colorlinks = true,
+} % color setup
+\usepackage[utf8]{inputenc}
+\usepackage[top=1 in,bottom=1in, left=0.5 in, right=1 in]{geometry}
+\usepackage{float} % for "H" placement specifier
+\usepackage[authoryear]{natbib}
+\usepackage{indentfirst}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{float}
+\usepackage{array}
+
+\DeclareUnicodeCharacter{FB01}{fi}
+\DeclareUnicodeCharacter{FF0C}{,}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\setlength\extrarowheight{1pt}
+
+\newcommand\red[1]{{\color{red}#1}}
+
+\bibliographystyle{plainnat}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\title{Supplement Files for Comparing baseball players across eras via the novel Full House Model}
+
+\author{Shen Yan$^1$, Adrian Burgos Jr.$^2$, Christopher Kinson$^1$, Brandon Niedert$^3$, \\and Daniel J. Eck$^1$}
+\date{}
+
+\begin{document}
+\maketitle
+
+{\centering
+1. Department of Statistics, University of Illinois Urbana-Champaign \\
+2. Department of History, University of Illinois Urbana-Champaign \\
+3. FuboTV Inc. \\}
+
+\vspace*{0.25cm}
+
+\section{Data Collection for Batting Statistics}
+
+Baseball-Reference Win Above Replacement(bWAR) is collected from the website: \url{https://www.baseball-reference.com/data/war_daily_bat.txt}, which is stored in batters\_bWAR.csv. 
+
+\bigskip
+
+Fangraphs Win Above Replacement(fWAR) is scraped from the website: \url {https://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=al&qual=0&type=c,4,5,6,23,58&season=2021&month=0&season1=2021&ind=0&team=0&rost=&age=&filter=&players=&startdate=&enddate=}, which is stored in batters\_fWAR.csv
+
+\bigskip
+
+Hits, Home Runs, and Walks are collected from Github: \url{https://github.com/chadwickbureau/baseballdatabank/tree/master/core}, and they are stored in the raw\_batter.csv. 
+
+
+\bigskip
+
+Hits, Runs, and Home Runs in a team's home and road games are collected from Github: \url{https://github.com/chadwickbureau/retrosplits/tree/master/daybyday}, and they are stored in the teams-xx.csv. 
+
+\bigskip
+
+The unique player IDs for Baseball-Reference, and Fangraphs are collected from \url{https://github.com/chadwickbureau/register/tree/master/data} and the unique player IDs for Baseball-Reference, and Chadwick are collected from \url{https://github.com/chadwickbureau/baseballdatabank/tree/master/core}. 
+
+ \section{Data Preprocess for Batting Statistics}
+
+merge\_pop.R combines the bWAR, fWAR, and other statistics when a player is traded in midseason. Also, it adds the corresponding MLB eligible population to the dataset. The results are stored in the batters\_combined\_b.csv and batters\_combined\_f.csv
+
+\bigskip
+
+park\_factor\_chad.R applies the park-factor adjustment to the Hits, Runs, and Home Runs. Also, it combines the Hits, Home Runs, and other statistics when a player is traded in midseason and adds the corresponding MLB eligible population to the dataset. The results are stored in the batter\_park\_factor.csv. 
+
+\bigskip
+
+clean\_batters.R combines all the important batting statistics based on the players' unique IDs in Baseball-Reference, Fangraphs, and Chadwick. The results are stored in the batters\_all.csv. 
+
+\section{Data Collection for Pitching Statistics}
+
+Baseball-Reference Win Above Replacement(bWAR) is collected from the website: \url{https://www.baseball-reference.com/data/war_daily_pitch.txt}, which is stored in pitchers\_bWAR.csv. 
+
+\bigskip
+
+Fangraphs Win Above Replacement(fWAR) is scraped from the website: \url {https://www.fangraphs.com/leaders.aspx?pos=all&stats=pit&lg=al&qual=y&type=8&season=2021&month=0&season1=2021&ind=0&team=0&rost=0&age=0&filter=&players=0&startdate=&enddate=}, which is stored in pitchers\_fWAR.csv
+
+\bigskip
+
+Earned Run Average(ERA), Strikeouts(SO), and other statistics are collected from Github: \url{https://github.com/chadwickbureau/baseballdatabank/tree/master/core}, and they are stored in the Pitching.csv. 
+
+\section{Data Preprocess for Pitching Statistics}
+
+
+merge\_pop\_p.R combines the bWAR, fWAR, and other statistics when a player is traded in midseason. Also, it adds the corresponding MLB eligible population to the dataset. The results are stored in the pitchers\_combined\_b.csv and pitchers\_combined\_f.csv
+
+\bigskip
+
+clean\_batters.R applies the park-factor adjustment to the Runs. Also, it combines all the important pitching statistics based on the players' unique IDs in Baseball-Reference, Fangraphs, and Chadwick. The results are stored in the pitchers\_all.csv. 
+
+
+\end{document}
